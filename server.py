@@ -8,6 +8,22 @@ def index():
 
 @app.route('/ninjas')
 def display_ninjas():
-	return render_template('ninjas.html')
+	img = 'tmnt.png' 
+	return render_template('ninjas.html', img='tmnt.png')
+
+@app.route('/ninjas/<color>')
+def display_color(color):
+	if color == "blue":
+		img = "leonardo.jpg"
+	elif color == "orange":
+		img = "michelangelo.jpg"
+	elif color == "red":
+		img = "raphael.jpg"
+	elif color == "purple":
+		img = "donatello.jpg"
+	else:
+		img = "notapril.jpg"
+
+	return render_template('ninjas.html', img=img)
 
 app.run(debug=True)
